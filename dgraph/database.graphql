@@ -1,0 +1,117 @@
+type Artist  {
+    id: ID! 
+    name: String! 
+}
+
+type Album {
+  id: ID!
+  name: String!,
+  albumCoverFilepath: String!
+  artist: Artist!
+}
+
+type Volume {
+  id: ID!
+  name: String!
+  part: Int!
+  album: Album!
+}
+
+type Genre {
+  id: ID!
+  name: String!
+}
+
+type TrackData {
+  id: ID!
+  filepath: String!
+  duration: Int!
+  artist: Artist!
+  volume: Volume!
+  features: [Artist]!
+  downloadURL: String!
+}
+
+type Track {
+  id: ID!
+  name: String!
+  data: TrackData
+}
+
+type Playlist {
+  id: ID!
+  name: String!
+  tracks: [Track]!
+  isPrivate: Boolean!
+  owner: User @hasInverse(field: "playlists")
+}
+
+
+# User Stuff
+type User @secret(field: "password") @auth(
+  mutation: null,
+
+) {
+  id: ID!
+  name: String!
+  email: String!
+  favoritePlaylist: Playlist!
+  playlists: [Playlist!]!
+  followsPlaylists: [Playlist!]!
+  friends: [User!]!
+  queue: PlayQueue
+}
+
+type PlayQueue @withSubscription {
+  id: ID!
+  users: [User!]!
+  playingDevice: Device!
+  playing: Boolean!
+  shuffle: Boolean!
+  playlist: Playlist!
+  currentStreamURL: String
+  nextStreamURL: String
+}
+
+enum Scope {
+  All
+}
+
+type APIApplication {
+  id: ID!
+  user: User!
+  clientId: String!
+  scope: [Scope!]!
+}
+
+type Device {
+  id: ID!
+  name: String!
+}
+
+type UserAccess {
+  id: ID!
+  user: User!
+  accessToken: String!
+  reloadToken: String!
+  application: APIApplication!
+  devices: [Device!]!
+}
+
+
+# Download Stuff
+enum DownloadPriority {
+  Admin,
+  ToBePlayed,
+  Queued,
+  Favorite,
+  PrivatePlaylist,
+  PublicPlaylist
+}
+
+type QueuedDownload {
+  id: ID!
+  track: Track!
+  priority: DownloadPriority!
+  requestedAt: DateTime!
+}

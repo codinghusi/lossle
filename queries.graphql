@@ -1,0 +1,19 @@
+query GetUser {
+  getUser(id: "0x4e2c") {
+    id, name, email,
+    favoritePlaylist {
+      name,
+      tracks {
+        name
+      }
+    }
+  }
+}
+
+mutation AddUser {
+  addUser(input: [{name: "Gerrrit", email: "asdf@asdf.de", favoritePlaylist: {name: "favorite", tracks: [], isPrivate: true}, playlists: [], friends: [], followsPlaylists: [], password: "123456"}]) {
+    user {
+      id
+    }
+  }
+}
