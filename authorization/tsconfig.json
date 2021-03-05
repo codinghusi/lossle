@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "ESNEXT",
+        "module": "AMD",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "moduleResolution": "node"
+    }
+}

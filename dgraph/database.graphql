@@ -52,8 +52,7 @@ type User @secret(field: "password") @auth(
   mutation: null,
 
 ) {
-  id: ID!
-  name: String!
+  username: String! @id
   email: String!
   favoritePlaylist: Playlist!
   playlists: [Playlist!]!

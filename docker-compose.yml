@@ -9,6 +9,16 @@ services:
       - alpha
       - ratel
     restart: on-failure
+
+  authorization:
+    build:
+      context: authorization
+    ports:
+      - 3000:3000
+    depends_on: 
+      - alpha
+    restart: on-failure
+
   zero:
     image: dgraph/dgraph:latest
     volumes:
