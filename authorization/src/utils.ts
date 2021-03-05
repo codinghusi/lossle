@@ -6,7 +6,9 @@ import * as jwt from 'jsonwebtoken';
 const ACCESS_TOKEN_DURATION = "15m";
 const RELOAD_TOKEN_DURATION = "30d";
 
-const PRIVATE_KEY = fs.readFileSync('private.key');
+const PRIVATE_KEY = fs.readFileSync('/app/builded/keys/jwt');
+export const PUBLIC_KEY = fs.readFileSync('/app/builded/keys/jwt.pub');
+
 const SIGN_OPTIONS: jwt.SignOptions = {
     algorithm: "RS256",
 };
@@ -39,16 +41,18 @@ export async function generateReloadToken(userid: string) {
 }
 
 async function query(query: string, variables: any) {
-    query = `query { ${query} }`;
+    console.log(`running ${query}`);
     const tx = client.newTxn();
     return await tx.queryWithVars(query, variables);
 }
 
 export async function checkUser(username: string, password: string) {
     const response = await query(`
+    query login($username: String, $password: String) {
         checkUserPassword(username: $username, password: $password) {
             username
         }
-    `, { username, password });
+    }`, { username, password });
     return response;
 }
+

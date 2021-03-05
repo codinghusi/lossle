@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { checkUser } from './utils';
+import { checkUser, PUBLIC_KEY } from './utils';
 
 const router = express.Router();
 const app = express();
@@ -26,6 +26,10 @@ router.get('/access_token', async (request, response) => {
         password as string
     );
     console.log(result);
+});
+
+router.get('public_key', async (request, response) => {
+    response.send(PUBLIC_KEY);
 });
 
 app.listen(3000, () => console.log("authorization server ready!"));

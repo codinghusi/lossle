@@ -11,9 +11,23 @@ query GetUser {
 }
 
 mutation AddUser {
-  addUser(input: [{name: "Gerrrit", email: "asdf@asdf.de", favoritePlaylist: {name: "favorite", tracks: [], isPrivate: true}, playlists: [], friends: [], followsPlaylists: [], password: "123456"}]) {
+  addUser(input: [
+    {
+      username: "Gerrit",
+      email: "asdf@asdf.de",
+      favoritePlaylist: {
+        name: "favorite",
+        tracks: [],
+        isPrivate: true
+        }, playlists: [], friends: [], followsPlaylists: [], password: "123456"}]) {
     user {
       id
     }
+  }
+}
+
+query {
+  checkUserPassword(username: "Gerrit", password: "123456") {
+    username
   }
 }

@@ -1,10 +1,12 @@
 {
     "compilerOptions": {
         "target": "ESNEXT",
-        "module": "AMD",
+        "module": "commonjs",
         "typeRoots": [
             "node_modules/@types"
         ],
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "outDir": "builded",
+        "rootDir": "src"
     }
 }
