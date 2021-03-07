@@ -48,7 +48,7 @@ async function query(query: string, variables: any) {
 
 export async function checkUser(username: string, password: string) {
     const response = await query(`
-    query login($username: String, $password: String) {
+    query login($username: String!, $password: String!) {
         checkUserPassword(username: $username, password: $password) {
             username
         }
