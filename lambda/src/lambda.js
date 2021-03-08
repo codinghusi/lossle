@@ -1,7 +1,6 @@
 
-async function loginResolver(payload) {
-    console.log(payload);
-    return login(payload, payload);
+async function loginResolver({args: {username, password}}) {
+    return login(username, password);
 }
 
 async function login(username, password) {
@@ -12,5 +11,5 @@ async function login(username, password) {
 }
 
 self.addGraphQLResolvers({
-    'Query.accessToken': loginResolver
+    'Query.authenticate': loginResolver
 });
