@@ -9,7 +9,7 @@ const RELOAD_TOKEN_DURATION = "30d";
 const PRIVATE_KEY = fs.readFileSync('/app/builded/keys/jwt');
 export const PUBLIC_KEY = fs.readFileSync('/app/builded/keys/jwt.pub');
 
-const SIGN_OPTIONS: jwt.SignOptions = {
+const SIGN_OPTIONS = {
     algorithm: "RS256",
 };
 
@@ -20,7 +20,7 @@ const clientStub = new DgraphClientStub(
 
 const client = new DgraphClient(clientStub);
 
-function generateToken(payload: any, expiresIn: string | number) {
+function generateToken(payload, expiresIn) {
     return new Promise((resolve, reject) => {
         jwt.sign(payload, PRIVATE_KEY, { ...SIGN_OPTIONS, expiresIn } , (err, token) => {
             if (err) {
@@ -32,21 +32,21 @@ function generateToken(payload: any, expiresIn: string | number) {
     });
 }
 
-export async function generateAccessToken(userid: string) {
+export async function generateAccessToken(userid) {
    return await generateToken({ user: userid }, ACCESS_TOKEN_DURATION);
 }
 
-export async function generateReloadToken(userid: string) {
+export async function generateReloadToken(userid) {
     return await generateToken({ user: userid }, RELOAD_TOKEN_DURATION);
 }
 
-async function query(query: string, variables: any) {
+async function query(query, variables) {
     console.log(`running ${query}`);
     const tx = client.newTxn();
     return await tx.queryWithVars(query, variables);
 }
 
-export async function checkUser(username: string, password: string) {
+export async function checkUser(username, password) {
     const response = await query(`
     query login($username: String!, $password: String!) {
         checkUserPassword(username: $username, password: $password) {

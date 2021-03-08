@@ -1,5 +1,6 @@
 FROM dgraph/dgraph-lambda:latest
 
+RUN rm /app/script/script.js
 VOLUME ./dist/script.js /app/script/script.js
 
 RUN apt update -y && apt install -y -qq nodejs npm openssh-client

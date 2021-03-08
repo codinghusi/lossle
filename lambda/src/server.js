@@ -22,8 +22,8 @@ router.get('/access_token', async (request, response) => {
 
     // checking
     const result = await checkUser(
-        username as string,
-        password as string
+        username,
+        password
     );
     console.log(result);
 });
