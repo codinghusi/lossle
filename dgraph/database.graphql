@@ -1,3 +1,12 @@
+type Tokens @remote {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type Query {
+  authenticate($username: String!, $password: String!): Tokens
+}
+
 type Artist  {
     id: ID! 
     name: String! 

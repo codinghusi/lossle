@@ -5,6 +5,10 @@ async function loginResolver(payload) {
 }
 
 async function login(username, password) {
+    return {
+        accessToken: "foo",
+        refreshToken: "bar",
+    }
 }
 
 self.addGraphQLResolvers({
