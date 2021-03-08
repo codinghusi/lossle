@@ -21,7 +21,7 @@ mutation AddUser {
         isPrivate: true
         }, playlists: [], friends: [], followsPlaylists: [], password: "123456"}]) {
     user {
-      id
+      username
     }
   }
 }

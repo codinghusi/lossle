@@ -10,11 +10,13 @@ services:
       - ratel
     restart: on-failure
 
-  authorization:
+  lambda:
     build:
-      context: authorization
+      context: lambda
     ports:
-      - 3000:3000
+      - 8686
+    environment:
+      DGRAPH_URL: http://alpha:8080
     depends_on: 
       - alpha
     restart: on-failure

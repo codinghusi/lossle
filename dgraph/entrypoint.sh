@@ -4,4 +4,4 @@ cd /dgraph
 /dgraph/init.sh &
 
 cd /dgraph-data
-dgraph alpha --my=alpha:7080 --zero=zero:5080
+dgraph alpha --my=alpha:7080 --zero=zero:5080 --graphql_lambda_url=http://lambda:8686/graphql_worker
