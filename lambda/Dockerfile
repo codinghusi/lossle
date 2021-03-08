@@ -3,8 +3,8 @@ FROM dgraph/dgraph-lambda:latest
 RUN rm /app/script/script.js
 VOLUME ./dist/script.js /app/script/script.js
 
-WORKDIR /app/custom
-RUN mkdir -p /app/custom/
+WORKDIR /custom
+RUN mkdir -p /custom/
 
 
 ADD package.json .
