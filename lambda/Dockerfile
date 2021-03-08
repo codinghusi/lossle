@@ -3,8 +3,6 @@ FROM dgraph/dgraph-lambda:latest
 RUN rm /app/script/script.js
 VOLUME ./dist/script.js /app/script/script.js
 
-RUN pacman -Syyu --noconfirm && pacman-db-upgrade && pacman -S --noconfirm nodejs npm openssh
-
 RUN mkdir -p /app/builded/keys
 WORKDIR /app
 
