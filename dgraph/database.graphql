@@ -4,7 +4,7 @@ type Tokens @remote {
 }
 
 type Query {
-  authenticate($username: String!, $password: String!): Tokens
+  authenticate(username: String!, password: String!): Tokens
 }
 
 type Artist  {
