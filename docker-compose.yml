@@ -15,14 +15,21 @@ services:
       context: keys
 
   lambda:
-    build:
-      context: lambda
+    image: dgraph/dgraph-lambda:latest
+    container_name: lambda
+    labels:
+      cluster: test
     ports:
-      - 8686
-    environment:
-      DGRAPH_URL: http://alpha:8080
-    depends_on: 
+      - 8686:8686
+    depends_on:
       - alpha
+    environment:
+      DGRAPH_URL: http://alpha:8180
+    volumes:
+      - type: bind
+        source: ./lambda/dist/script.js
+        target: /app/script/script.js
+        read_only: true
     restart: on-failure
 
   zero:
