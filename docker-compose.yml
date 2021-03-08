@@ -10,6 +10,10 @@ services:
       - ratel
     restart: on-failure
 
+  keys:
+    build:
+      context: keys
+
   lambda:
     build:
       context: lambda
