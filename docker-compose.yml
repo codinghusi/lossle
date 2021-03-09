@@ -24,7 +24,7 @@ services:
     depends_on:
       - alpha
     environment:
-      DGRAPH_URL: http://alpha:8180
+      DGRAPH_URL: http://alpha:8080
     volumes:
       - type: bind
         source: ./lambda/dist/script.js
