@@ -11,4 +11,4 @@ do
         echo "finished" > $check_file
         break
     fi
-donenano
+done
