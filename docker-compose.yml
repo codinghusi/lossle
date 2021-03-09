@@ -21,8 +21,6 @@ services:
       cluster: test
     ports:
       - 8686:8686
-    depends_on:
-      - alpha
     environment:
       DGRAPH_URL: http://alpha:8080
     volumes:
