@@ -50,6 +50,7 @@ services:
     restart: on-failure
     depends_on: 
       - zero
+      - lambda
     ports:
       - 7080:7080
       - 8080:8080
