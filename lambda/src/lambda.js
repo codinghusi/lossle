@@ -1,9 +1,5 @@
 
-function loginResolver({args: {username, password}}) {
-    return login(username, password);
-}
-
-async function login(username, password) {
+async function loginResolver({args: {username, password}}) {
     return {
         accessToken: "foo",
         refreshToken: "bar",

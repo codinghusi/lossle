@@ -15,7 +15,7 @@
   \***********************/
 /***/ (() => {
 
-eval("\r\nfunction loginResolver({args: {username, password}}) {\r\n    return login(username, password);\r\n}\r\n\r\nasync function login(username, password) {\r\n    return {\r\n        accessToken: \"foo\",\r\n        refreshToken: \"bar\",\r\n    }\r\n}\r\n\r\nself.addGraphQLResolvers({\r\n    'Query.authenticate': loginResolver\r\n});\r\n\n\n//# sourceURL=webpack://app/./src/lambda.js?");
+eval("\r\nasync function loginResolver({args: {username, password}}) {\r\n    return {\r\n        accessToken: \"foo\",\r\n        refreshToken: \"bar\",\r\n    }\r\n}\r\n\r\nself.addGraphQLResolvers({\r\n    'Query.authenticate': loginResolver\r\n});\r\n\n\n//# sourceURL=webpack://app/./src/lambda.js?");
 
 /***/ })
 

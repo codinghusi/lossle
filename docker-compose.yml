@@ -20,19 +20,16 @@ services:
     ports:
       - 4000:4000
     environment: 
-      API_URL: https://gerrit.lamann.eu/alpha/graphql
+      API_URL: /alpha/graphql
     depends_on: 
       - alpha
 
   lambda:
     image: dgraph/dgraph-lambda:latest
-    container_name: lambda
-    labels:
-      cluster: test
     ports:
       - 8686:8686
     environment:
-      DGRAPH_URL: http://alpha:8080
+      DGRAPH_URL: http://alpha:7080
     depends_on:
       - alpha
     volumes:
