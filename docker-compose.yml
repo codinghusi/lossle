@@ -8,11 +8,21 @@ services:
     depends_on:
       - alpha
       - ratel
+      - graphiql
     restart: on-failure
 
   keys:
     build:
       context: keys
+
+  graphiql:
+    image: npalm/graphiql
+    ports:
+      - 4000:4000
+    environment: 
+      API_URL: https://gerrit.lamann.eu/alpha/graphql
+    depends_on: 
+      - alpha
 
   lambda:
     image: dgraph/dgraph-lambda:latest

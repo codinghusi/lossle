@@ -33,7 +33,7 @@ query CheckPassword {
 }
 
 query login($username: String!, $password: String!) {
-  authenticate(username: $username, password:$password) {
+  authenticate(username: $username, password: $password) {
     accessToken,
     refreshToken
   }
