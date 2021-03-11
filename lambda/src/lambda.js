@@ -1,5 +1,5 @@
 
-async function loginResolver({args: {username, password}}) {
+function loginResolver({args: {username, password}}) {
     return login(username, password);
 }
 
