@@ -32,7 +32,7 @@ services:
     ports:
       - 8686:8686
     environment:
-      DGRAPH_URL: http://alpha:7080
+      DGRAPH_URL: http://alpha:8080
     depends_on:
       - alpha
     volumes:
