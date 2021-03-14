@@ -32,7 +32,7 @@ services:
       - alpha
 
   lambda:
-    image: dgraph/dgraph-lambda:master
+    image: dgraph/dgraph-lambda:latest
     labels:
       cluster: test
       service: lambda
