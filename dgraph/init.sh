@@ -1,8 +1,8 @@
 #!/bin/sh
 
-check_file=./initialized
+check_file=./dgraph/initialized.txt
 
-while [ ! -f "$check_file" ];
+while [ ! -d "$check_file" ];
 do
     sleep 10s
     if curl -X POST 'http://localhost:8080/admin/schema' --data-binary '@database.graphql' | grep 'Success'
