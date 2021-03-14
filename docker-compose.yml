@@ -3,7 +3,7 @@ services:
   webssh:
     image: snsyzb/webssh
     ports:
-      - 10000:100000
+      - 10000:10000
     command: wssh --address=0.0.0.0 --port=10000
 
   reverseproxy:
