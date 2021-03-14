@@ -1,4 +1,4 @@
-FROM dgraph/dgraph:latest
+FROM dgraph/dgraph:master
 
 WORKDIR /dgraph
 
