@@ -13,5 +13,4 @@ dgraph alpha --zero=zero:5080 \
              -v=2 \
              --my=alpha:7080 \
              --whitelist="0.0.0.0" \
-             --graphql_lambda_url="http://lambda:8686/graphql-worker;" \
-             --trace "ratio=1.0;"
+             --graphql_lambda_url="http://lambda:8686/graphql-worker"
