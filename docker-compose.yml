@@ -33,6 +33,9 @@ services:
 
   lambda:
     image: dgraph/dgraph-lambda:latest
+    labels:
+      cluster: test
+      service: lambda
     ports:
       - 8686:8686
     environment:
@@ -48,15 +51,21 @@ services:
 
   zero:
     image: dgraph/dgraph:latest
+    labels:
+      cluster: test
+      service: zero
     volumes:
       - ./dgraph-vol:/dgraph-data
     ports:
       - 5080:5080
       - 6080:6080
     restart: on-failure
-    command: dgraph zero --my=zero:5080
+    command: dgraph zero --logtostderr -v=2 --bindall --expose_trace --profile_mode block --block_rate 10 --my=zero:5080
   
   alpha:
+    labels:
+      cluster: test
+      service: alpha
     build:
       context: ./dgraph
       dockerfile: Dockerfile
@@ -72,6 +81,9 @@ services:
   
   ratel:
     image: dgraph/dgraph:latest
+    labels:
+      cluster: test
+      service: ratel
     ports:
       - 8000:8000
     command: dgraph-ratel
