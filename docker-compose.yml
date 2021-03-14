@@ -53,7 +53,7 @@ services:
       - 5080:5080
       - 6080:6080
     restart: on-failure
-    command: dgraph zero --logtostderr --bindall --expose_trace --profile_mode block --block_rate 10 --my=zero:5080
+    command: dgraph zero -v=2 --logtostderr --bindall --expose_trace --profile_mode block --block_rate 10 --my=zero:5080
   
   alpha:
     labels:
