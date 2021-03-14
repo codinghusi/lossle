@@ -1,6 +1,6 @@
 #!/bin/sh
 
-check_file=./dgraph/initialized.txt
+check_file=/dgraph/initialized.txt
 
 while [ ! -d "$check_file" ];
 do
