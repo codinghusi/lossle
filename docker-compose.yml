@@ -7,7 +7,6 @@ services:
       - 80:80
     depends_on:
       - alpha
-      - ratel
       - graphiql
     restart: on-failure
 
@@ -71,15 +70,3 @@ services:
       - 7080:7080
       - 8080:8080
       - 9080:9080
-  
-  ratel:
-    image: dgraph/dgraph:master
-    labels:
-      cluster: test
-      service: ratel
-    ports:
-      - 8000:8000
-    command: dgraph-ratel
-    depends_on:
-      - zero
-      - alpha
