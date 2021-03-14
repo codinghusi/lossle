@@ -10,7 +10,6 @@ dgraph alpha --zero=zero:5080 \
              --profile_mode block \
              --block_rate 10 \
              --logtostderr \
-             -v=2 \
              --my=alpha:7080 \
              --whitelist="0.0.0.0" \
              --graphql_lambda_url="http://lambda:8686/graphql-worker"
