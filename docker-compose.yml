@@ -34,7 +34,7 @@ services:
       - alpha
 
   lambda:
-    image: dgraph/dgraph-lambda:latest
+    image: dgraph/dgraph-lambda:1.2.4
     labels:
       cluster: test
       service: lambda
@@ -52,7 +52,7 @@ services:
     restart: on-failure
 
   zero:
-    image: dgraph/dgraph:master
+    image: dgraph/dgraph:016848f2
     labels:
       cluster: test
       service: zero
