@@ -20,7 +20,7 @@ services:
     ports:
       - 4000:4000
     environment: 
-      API_URL: /graphql
+      API_URL: /dgraph/graphql
     depends_on: 
       - alpha
 
@@ -29,7 +29,7 @@ services:
     ports:
       - 4001:4000
     environment: 
-      API_URL: /admin
+      API_URL: /dgraph/admin
     depends_on: 
       - alpha
 
