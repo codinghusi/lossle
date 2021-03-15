@@ -17,8 +17,6 @@ services:
 
   graphiql:
     image: npalm/graphiql
-    ports:
-      - 4000:4000
     environment: 
       API_URL: /dgraph/graphql
     depends_on: 
@@ -26,8 +24,6 @@ services:
 
   admin_graphiql:
     image: npalm/graphiql
-    ports:
-      - 4000:4000
     environment: 
       API_URL: /dgraph/admin
     depends_on: 
